@@ -10,10 +10,10 @@ router.route("/").get( async (req, res) => {
     .then( r => {
         if (r.status == 200) {
             const pokemon = getPokemonNames(r.data.pokemon);
-            res.status(200).send(pokemon);
+            res.status(200).json({status: 200, data: pokemon});
         }
         else {
-            res.status(404).send("Error on listing pokemon names.");
+            res.status(404).json({status: 400, message:"Error on listing pokemon names."});
         }
     })
     .catch((err) => {
@@ -30,14 +30,14 @@ router.route("/:name").get(async (req, res) => {
         if (r.status == 200) {
             const pokemon = getPokemonByName(r.data.pokemon, pokemonName);
             if (pokemon) {
-                res.status(200).send(pokemon);
+                res.status(200).json({status: 200, data: pokemon});
             }
             else {
-                res.status(404).send("Pokemon not found.");
+                res.status(404).send({status: 404, message: "Pokemon not found."});
             }
         }
         else {
-            res.status(400).send(r);
+            res.status(400).json({status: 400, message: r});
         }
       });
     } catch (err) {
