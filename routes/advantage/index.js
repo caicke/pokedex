@@ -5,6 +5,8 @@ const axios = require('axios');
 
 const url = "https://raw.githubusercontent.com/UpperSoft/desafio-backend-nodejs/main/src/pokedex.json";
 
+const { getPokemonByName, getPokemonTypes, getPokemonWeaknessesByName } = require('../../src/utils/pokemonFunctions');
+
 // Mensagem na página inicial da rota
 router.route("/").get( async (req, res) => {
     res.send("Advantage page");
@@ -48,31 +50,5 @@ router.route("/:name").post(async (req, res) => {
     }
 });
 
-const getPokemonByName = (pokemonList, name) => {
-    return pokemonList.find(element => element.name.toUpperCase() === name.toUpperCase())
-}
-
-const getPokemonWeaknessesByName = (pokemonList, typeList) => {
-    const pokemons = []
-
-    pokemonList.map(ele => {
-        if (typeList.some(r => ele.weaknesses.indexOf(r) >= 0)) {
-            pokemons.push(ele);
-        }
-    });
-
-    return pokemons;
-}
-
-const getPokemonTypes = (pokemonList, name) => {
-    var types = [];
-    const pokemon = pokemonList.find(element => element.name.toUpperCase() === name.toUpperCase());
-    
-    if (pokemon) {
-        types = pokemon.type;
-    }
-
-    return types;
-}
 
 module.exports = router;
