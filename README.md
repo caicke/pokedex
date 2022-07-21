@@ -1,6 +1,6 @@
 # Pokedex API
 
-Este projeto foi construído no processo seletivo da Uppersoft.
+Este projeto foi construído no desafio de back-end da Uppersoft.
 
 ## Estrutura do projeto
 O projeto está estruturado da seguinte forma:
