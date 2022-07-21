@@ -10,7 +10,7 @@ const weaknessRouter = require("./routes/weakness");
 
 const app = express();
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // middlewares
 app.use(bodyParser.json());
@@ -24,5 +24,5 @@ app.use("/api/v1/weakness", weaknessRouter);
 
 // app listening
 app.listen(port, () => {
-  console.log(`pokedex ativa na porta ${port}`);
+  console.log(`pokedex ativada na porta ${port}`);
 });

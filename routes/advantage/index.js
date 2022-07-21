@@ -5,7 +5,7 @@ const axios = require('axios');
 
 const url = "https://raw.githubusercontent.com/UpperSoft/desafio-backend-nodejs/main/src/pokedex.json";
 
-const { getPokemonByName, getPokemonTypes, getPokemonWeaknessesByName } = require('../../src/utils/pokemonFunctions');
+const { getPokemonByName, getPokemonTypeList, getPokemonWeaknessesByName } = require('../../src/utils/pokemonFunctions');
 
 // Mensagem na página inicial da rota
 router.route("/").get( async (req, res) => {
@@ -26,16 +26,16 @@ router.route("/:name").post(async (req, res) => {
                 res.send({ status: 404, message: "Pokémon not found." });
                 return;
             }
-
-            const types = getPokemonTypes(r.data.pokemon, pokemonName);
+            
+            const types = getPokemonTypeList(r.data.pokemon, pokemonName);
 
             const dominatedPokemons = getPokemonWeaknessesByName(r.data.pokemon, types);
 
             if (dominatedPokemons) {
-                res.status(200).send(dominatedPokemons);
+                res.status(200).json({ status: 200, data: dominatedPokemons });
             }
             else {
-                res.status(404).send({status: 404, message: "Pokemon not found."});
+                res.status(404).json({ status: 404, message: "Pokemon not found." });
                 return;
             }
         }

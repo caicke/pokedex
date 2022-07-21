@@ -3,8 +3,9 @@ const router = express.Router();
 
 const axios = require('axios');
 
-const url = "https://raw.githubusercontent.com/UpperSoft/desafio-backend-nodejs/main/src/pokedex.json";
+require("dotenv").config();
 
+const url = process.env.URL || 'https://raw.githubusercontent.com/UpperSoft/desafio-backend-nodejs/main/src/pokedex.json';
 const { getPokemonNames, getPokemonByName } = require('../../src/utils/pokemonFunctions');
 
 router.route("/").get( async (req, res) => {
