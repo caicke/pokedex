@@ -11,4 +11,4 @@ O projeto está estruturado da seguinte forma:
 ## Como executar?
 - Baixe o ``.zip`` do projeto e execute a instrução ``npm install`` em um terminal para instalar todas as dependências necessárias.
 - Em seguida, utilize o comando ``npm start`` para iniciar o servidor.
-- O servidor irá ser iniciado na porta *5000*. Podemos agora acessá-la localmente e estar os *endpoints* construídos.
+- O servidor irá ser iniciado na porta *5000*. Podemos agora acessá-la localmente e testar os *endpoints* construídos.
